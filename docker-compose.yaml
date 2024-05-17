@@ -136,11 +136,11 @@ services:
     command: sh -c "./mvnw spring-boot:run"
 
   live_data_receiver-microservice:
-    build: ./Live_data_receiver/api
+    build: ./live-data-receiver-microservice/api
     container_name: live_data_receiver
     image: maven:3-openjdk-17
     volumes:
-      - ./Live_data_receiver:/Live_data_receiver
+      - ./live-data-receiver-microservice:/live-data-receiver-microservice
     env_file:
       - .env
     ports:
@@ -158,7 +158,7 @@ services:
         "spring.rabbitmq.password":"$RABBITMQ_PASSWORD",
         "api.key":"$API_KEY"
         }'
-    working_dir: /Live_data_receiver/api
+    working_dir: /live-data-receiver-microservice/api
     command: sh -c "./mvnw spring-boot:run"
 
   notification-microservice:
