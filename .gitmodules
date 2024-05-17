@@ -1,0 +1,21 @@
+[submodule "live-data-receiver-microservice"]
+	path = live-data-receiver-microservice
+	url = https://github.com/GateMate-TQS/live-data-receiver-microservice.git
+[submodule "flight-microservice"]
+	path = flight-microservice
+	url = https://github.com/GateMate-TQS/flight-microservice.git
+[submodule "web-ui"]
+	path = web-ui
+	url = https://github.com/GateMate-TQS/web-ui.git
+[submodule "user-microservice"]
+	path = user-microservice
+	url = https://github.com/GateMate-TQS/user-microservice.git
+[submodule "payment-microservice"]
+	path = payment-microservice
+	url = https://github.com/GateMate-TQS/payment-microservice.git
+[submodule "notification-microservice"]
+	path = notification-microservice
+	url = https://github.com/GateMate-TQS/notification-microservice.git
+[submodule "airport-display"]
+	path = airport-display
+	url = https://github.com/GateMate-TQS/airport-display.git
