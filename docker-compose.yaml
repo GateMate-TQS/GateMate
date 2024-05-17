@@ -202,8 +202,8 @@ services:
     ports:
       - 8086:8086
     volumes:
-      - aiport-display-node-modules:/airpot-display/frontend/node_modules
-      - ./airpot-display/frontend:/airpot-display/frontend
+      - airport-display-node-modules:/airport-display/frontend/node_modules
+      - ./airport-display/frontend:/airport-display/frontend
     stdin_open: true
     tty: true
     env_file: .env
@@ -228,7 +228,7 @@ services:
 volumes:
   node_modules:
     driver: local
-  aiport-display-node-modules:
+  airport-display-node-modules:
     driver: local
   data_sql:
     driver: local
