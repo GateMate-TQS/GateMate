@@ -93,7 +93,10 @@ services:
     env_file:
       - .env
     ports:
-      - "${PAYMENT_PORT}:8081"
+      - "8081:8080"
+
+    expose:
+      - 8081
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -102,6 +105,17 @@ services:
     environment:
       RABBITMQ_USER: ${RABBITMQ_USER}
       RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url":"jdbc:mysql://mysql:$MYSQL_DOCKER_PORT/$MYSQL_DATABASE_PAYMENT",
+        "spring.datasource.username":"$MYSQL_USER",
+        "spring.datasource.password":"$MYSQL_PASSWORD",
+        "spring.redis.host":"redis",
+        "spring.redis.port":"6379",
+        "spring.rabbitmq.host":"rabbitmq",
+        "spring.rabbitmq.port":"$RABBITMQ_DOCKER_PORT",
+        "spring.rabbitmq.username":"$RABBITMQ_USER",
+        "spring.rabbitmq.password":"$RABBITMQ_PASSWORD"
+        }'
     working_dir: /payment-microservice/api
     command: sh -c "./mvnw spring-boot:run"
 
