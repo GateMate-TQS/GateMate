@@ -13,6 +13,6 @@
 [submodule "airport-display"]
 	path = airport-display
 	url = https://github.com/GateMate-TQS/airport-display.git
-[submodule "user-microservice"]
+[submodule "user"]
 	path = user-microservice
 	url = git@github.com:GateMate-TQS/user-microservice.git
