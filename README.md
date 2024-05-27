@@ -2,12 +2,6 @@
 
 ## Deployement of the GateMate project
 
-```bash
-cd GateMate
-git submodule update --recursive --remote
-docker-compose up --build -d
-```
-
 env file should be created in the root directory of the project with the following content:
 
 ```bash
@@ -47,3 +41,24 @@ API_KEY=???
 # JWT Configuration
 JWT_SECRET=yoursecret
 ```
+
+
+```bash
+git submodule update --init --recursive --remote
+docker-compose up
+```
+
+The project will be deployed on the following ports:
+
+- Payment Service: 8001
+- Flight Service: 8002
+- User Service: 8003
+- Live Data Receiver Service: 8004
+- Notification Service: 8005
+- Frontend: 8083
+- Display: 8086
+- MySQL: 33060
+- RabbitMQ: 15672
+- Nginx: 80
+
+After that all the services will be up and running and you can access the frontend on http://localhost:8083
