@@ -47,7 +47,7 @@ jobs:
         uses: docker/bake-action@v3
         with:
           push: true
-          files: docker-compose.yaml
+          files: docker-compose.prod.yaml
           set: |
             *.cache-to=type=gha,scope=cached-stage,mode=max
             *.cache-from=type=gha,scope=cached-stage
@@ -89,8 +89,8 @@ jobs:
 
       - name: Deploy with docker-compose
         run: |
-          docker compose -f docker-compose.yaml pull
-          docker compose -f docker-compose.yaml up -d --remove-orphans
+          docker compose -f docker-compose.prod.yaml pull
+          docker compose -f docker-compose.prod.yaml up -d --remove-orphans
           docker container prune -f
           docker image prune -af
           docker builder prune
