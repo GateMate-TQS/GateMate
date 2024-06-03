@@ -8,6 +8,26 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PRODUCTION: true
+      RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
+      RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
+      RABBITMQ_MANAGEMENT_PORT: ${{ secrets.RABBITMQ_MANAGEMENT_PORT }}
+      RABBITMQ_PORT: ${{ secrets.RABBITMQ_PORT }}
+      NGINX_PORT: ${{ secrets.NGINX_PORT }}
+      PAYMENT_PORT: ${{ secrets.PAYMENT_PORT }}
+      FLIGHT_PORT: ${{ secrets.FLIGHT_PORT }}
+      USER_PORT: ${{ secrets.USER_PORT }}
+      LIVE_DATA_RECEIVER_PORT: ${{ secrets.LIVE_DATA_RECEIVER_PORT }}
+      NOTIFICATION_PORT: ${{ secrets.NOTIFICATION_PORT }}
+      FRONTEND_PORT: ${{ secrets.FRONTEND_PORT }}
+      DISPLAY_PORT: ${{ secrets.DISPLAY_PORT }}
+      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+      MYSQL_USER: ${{ secrets.MYSQL_USER }}
+      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      MYSQL_LOCAL_PORT: ${{ secrets.MYSQL_LOCAL_PORT }}
+      MYSQL_DOCKER_PORT: ${{ secrets.MYSQL_DOCKER_PORT }}
+      API_KEY: ${{ secrets.API_KEY }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -37,6 +57,26 @@ jobs:
     runs-on: self-hosted
     env:
       PRODUCTION: true
+      RABBITMQ_USER: ${{ secrets.RABBITMQ_USER }}
+      RABBITMQ_PASSWORD: ${{ secrets.RABBITMQ_PASSWORD }}
+      RABBITMQ_MANAGEMENT_PORT: ${{ secrets.RABBITMQ_MANAGEMENT_PORT }}
+      RABBITMQ_PORT: ${{ secrets.RABBITMQ_PORT }}
+      NGINX_PORT: ${{ secrets.NGINX_PORT }}
+      PAYMENT_PORT: ${{ secrets.PAYMENT_PORT }}
+      FLIGHT_PORT: ${{ secrets.FLIGHT_PORT }}
+      USER_PORT: ${{ secrets.USER_PORT }}
+      LIVE_DATA_RECEIVER_PORT: ${{ secrets.LIVE_DATA_RECEIVER_PORT }}
+      NOTIFICATION_PORT: ${{ secrets.NOTIFICATION_PORT }}
+      FRONTEND_PORT: ${{ secrets.FRONTEND_PORT }}
+      DISPLAY_PORT: ${{ secrets.DISPLAY_PORT }}
+      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+      MYSQL_USER: ${{ secrets.MYSQL_USER }}
+      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      MYSQL_LOCAL_PORT: ${{ secrets.MYSQL_LOCAL_PORT }}
+      MYSQL_DOCKER_PORT: ${{ secrets.MYSQL_DOCKER_PORT }}
+      API_KEY: ${{ secrets.API_KEY }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
     steps:
       - uses: actions/checkout@v3
 
@@ -49,8 +89,8 @@ jobs:
 
       - name: Deploy with docker-compose
         run: |
-          docker compose -f compose.prod.yml pull
-          docker compose -f compose.prod.yml up -d --remove-orphans
+          docker compose -f docker-compose.yaml pull
+          docker compose -f docker-compose.yaml up -d --remove-orphans
           docker container prune -f
           docker image prune -af
           docker builder prune
