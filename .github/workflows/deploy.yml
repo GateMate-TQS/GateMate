@@ -79,6 +79,8 @@ jobs:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: true
 
       - name: Login to Github Packages
         uses: docker/login-action@v2
