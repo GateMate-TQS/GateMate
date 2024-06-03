@@ -42,7 +42,7 @@ services:
   live_data_receiver-microservice:
     build: ./live-data-receiver-microservice/api
     container_name: live_data_receiver
-    image: maven:3-openjdk-17
+    image: ghcr.io/gatemate-tqs/live-data-receiver-microservice:${TAG:-latest}
     volumes:
       - ./live-data-receiver-microservice:/live-data-receiver-microservice
     env_file:
@@ -66,7 +66,7 @@ services:
   flight-microservice:
     build: ./flight-microservice/api
     container_name: flight
-    image: maven:3-openjdk-17
+    image: ghcr.io/gatemate-tqs/flight-microservice:${TAG:-latest}
     volumes:
       - ./flight-microservice:/flight-microservice
     env_file:
@@ -96,7 +96,7 @@ services:
   payment-microservice:
     build: ./payment-microservice/api
     container_name: payment
-    image: maven:3-openjdk-17
+    image: ghcr.io/gatemate-tqs/payment-microservice:${TAG:-latest}
     volumes:
       - ./payment-microservice:/payment-microservice
     env_file:
@@ -118,7 +118,7 @@ services:
   user-microservice:
     build: ./user-microservice/api
     container_name: user
-    image: maven:3-openjdk-17
+    image: ghcr.io/gatemate-tqs/user-microservice:${TAG:-latest}
     volumes:
       - ./user-microservice:/user-microservice
     env_file:
@@ -141,6 +141,7 @@ services:
     build:
       context: web-ui/frontend
     container_name: frontend
+    image: ghcr.io/gatemate-tqs/frontend:${TAG:-latest}
     ports:
       - $FRONTEND_PORT:$FRONTEND_PORT
     volumes:
@@ -154,6 +155,7 @@ services:
     build:
       context: airport-display/frontend
     container_name: display
+    image: ghcr.io/gatemate-tqs/display:${TAG:-latest}
     ports:
       - $DISPLAY_PORT:$DISPLAY_PORT
     volumes:
